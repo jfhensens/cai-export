@@ -1,0 +1,13 @@
+{
+	"current": {
+		"userSlug": null,
+		"botSlug": null,
+		"versionSlug": null,
+		"developerToken": null,
+		"url": {
+			"dataset": "/train/users/$USER_SLUG/bots/$BOT_SLUG/versions/$VERSION_SLUG/dataset",
+			"intent": "/train/users/$USER_SLUG/bots/$BOT_SLUG/versions/$VERSION_SLUG/dataset/intents/$INTENT_SLUG",
+			"gazette": "/train/users/$USER_SLUG/bots/$BOT_SLUG/versions/$VERSION_SLUG/dataset/gazettes/$GAZETTE_SLUG"
+		}
+	}
+}

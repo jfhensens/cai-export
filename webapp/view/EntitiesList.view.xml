@@ -1,0 +1,82 @@
+<mvc:View 
+	xmlns="sap.m" 
+	xmlns:core="sap.ui.core"
+	xmlns:form="sap.ui.layout.form" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	controllerName="be.hensens.cai.export.controller.EntitiesList" 
+	displayBlock="true" 
+	width="100%" 
+	height="100%">
+	<Page 
+		title="{i18n>home.entities.header} ({
+			path: 'bot>/gazettes',
+			formatter: '.formatter.countInstances'
+		})" 
+		showNavButton="true" 
+		showFooter="true" 
+		showHeader="true" 
+		navButtonPress="onNavBack">
+		<content>
+			<List
+				id="gazettesList"
+				items="{
+					path: 'bot>/gazettes',
+					sorter: {
+						path: 'entity/name'
+					}
+				}"
+				mode="MultiSelect"
+				sticky="HeaderToolbar"
+				selectionChange="onItemSelectionChanged">
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Button 
+								icon="sap-icon://multiselect-all"
+								tooltip="{i18n>intents.list.all}"
+								press="onSelectAll" />
+							<Button 
+								icon="sap-icon://multiselect-none"
+								tooltip="{i18n>intents.list.none}"
+								press="onSelectNone" />
+							<ToolbarSpacer/>
+							<Button 
+								icon="sap-icon://refresh"
+								tooltip="{i18n>intents.list.refresh}" 
+								press="onRefresh" />
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<items>
+					<ObjectListItem 
+						title="{bot>entity/name}"
+						selected="{bot>selected}">
+						<customData>
+							<core:CustomData
+								key="slug"
+								value="{bot>slug}" />
+						</customData>
+					</ObjectListItem>
+				</items>
+			</List>
+		</content>
+		<footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer/>
+					<Button 
+						text="{
+							path: 'bot>/gazettes',
+							formatter: '.formatter.countSelected'
+						}"
+						iconFirst="false"
+						icon="sap-icon://download-from-cloud" 
+						tooltip="{i18n>home.entities.subheader}"
+						type="Emphasized"
+						width="5rem"
+						press="onExport" />
+				</content>
+			</Toolbar>
+		</footer>
+	</Page>
+</mvc:View>

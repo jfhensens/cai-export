@@ -1,0 +1,10 @@
+#
+#Tue Jun 18 13:59:07 UTC 2019
+Name=sap_cai_train
+URL=https\://api.cai.tools.sap/train/v2
+ProxyType=Internet
+Type=HTTP
+WebIDEEnabled=true
+Authentication=NoAuthentication
+WebIDEUsage=API
+Description=SAP Conversational AI Dialog endpoint

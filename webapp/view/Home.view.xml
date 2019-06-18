@@ -1,0 +1,77 @@
+<mvc:View 
+	xmlns="sap.m" 
+	xmlns:mvc="sap.ui.core.mvc" 
+	controllerName="be.hensens.cai.export.controller.Home" 
+	displayBlock="true"
+	width="100%"
+	height="100%">
+	<Page 
+		title="{i18n>home.title}" 
+		showNavButton="false" 
+		showFooter="false" 
+		showHeader="false">
+		<content>
+			<FlexBox 
+				alignItems="Start" 
+				wrap="Wrap" 
+				class="sapUiSmallMargin">
+				<items>
+					<GenericTile 
+						header="{i18n>home.settings.header}" 
+						subheader="{i18n>home.settings.subheader}" 
+						press="navToSettings"
+						class="sapUiTinyMargin">
+						<tileContent>
+							<TileContent>
+								<content>
+									<ImageContent 
+										src="sap-icon://settings" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile 
+						header="{i18n>home.intents.header}" 
+						subheader="{i18n>home.intents.subheader}"
+						state="{bot>/loadState/intents}"
+						press="navToIntents"
+						class="sapUiTinyMargin">
+						<tileContent>
+							<TileContent>
+								<content>
+									<NumericContent 
+										value='{
+											path: "bot>/intents",
+											formatter: ".formatter.countInstances"
+										}' 
+										icon="sap-icon://download-from-cloud"
+										withMargin="false" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+					<GenericTile 
+						header="{i18n>home.entities.header}"
+						subheader="{i18n>home.entities.subheader}"
+						state="{bot>/loadState/gazettes}"
+						press="navToEntities"
+						class="sapUiTinyMargin">
+						<tileContent>
+							<TileContent>
+								<content>
+									<NumericContent 
+										value='{
+											path: "bot>/gazettes",
+											formatter: ".formatter.countInstances"
+										}' 
+										icon="sap-icon://download-from-cloud" 
+										withMargin="false" />
+								</content>
+							</TileContent>
+						</tileContent>
+					</GenericTile>
+				</items>
+			</FlexBox>
+		</content>
+	</Page>
+</mvc:View>
