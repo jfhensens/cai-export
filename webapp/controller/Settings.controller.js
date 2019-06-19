@@ -18,10 +18,11 @@ sap.ui.define([
 
 	SettingsCntlr.prototype.onNavBack = function () {
 		if (this.getDirtyFlag()) {
+			// pending changes to be saved
 			MessageBox.warning(this._oTranslatableTexts.getText("settings.pendingChanges"), {
 				title: this._oTranslatableTexts.getText("settings.title")
 			});
-		} else {
+		} else if (this.validateSettings(this.getOwnerComponent().getModel("settings").getProperty("/current"))) {
 			var oHistory = History.getInstance();
 	
 			var sPreviousHash = oHistory.getPreviousHash();
@@ -31,6 +32,11 @@ sap.ui.define([
 			} else {
 				this.getOwnerComponent().getRouter().navTo("Home", true);
 			}
+		} else {
+			// invalid settings
+			MessageBox.warning(this._oTranslatableTexts.getText("settings.invalid"), {
+				title: this._oTranslatableTexts.getText("settings.title")
+			});
 		}
 	};
 
